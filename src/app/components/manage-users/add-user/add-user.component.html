@@ -1,0 +1,50 @@
+<form [formGroup]="userForm"action="" class="normal-form" (ngSubmit)="addUser()">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+            <div class="form-controles">
+                <mat-form-field>
+                    <input matInput formControlName="fName" type="text" placeholder="First Name*">
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="mName" type="text" placeholder="Middle Name*">
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="lName" type="text" placeholder="Last Name*">
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="email" type="email" placeholder="email*">
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>
+                
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="form-controles">
+                <mat-form-field>
+                    <input matInput formControlName="phone" type="text" placeholder="Phone Number*">
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-select formControlName="role" placeholder="User Role*">
+                        <mat-option>----Select Role----</mat-option>
+                        <ng-container *ngFor = "let item of roles">
+                            <mat-option value="{{item.id}}">{{item.value}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="password" type="password" placeholder="Password*">
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>               
+                <div class="buttonRow">
+                    <button mat-raised-button color="primary" type="submit"[disabled]="userForm.invalid">Add User</button>
+                    <button mat-raised-button color="warn" (click)=clear()>Clear Fields</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

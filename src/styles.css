@@ -1,7 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 .cart-items{
     font-size: small;
 }
 .product-btn{
     font-size: smaller;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.fill-remaining-space{
+    flex: 1 1 auto;
+}
+form.normal-form{
+    margin: 10px;
+}
+.form-controles{
+    width: 100%;
+    padding: 5%;
+}
+.form-controles>*{
+    width: 100%;
+}
+.buttonRow button{
+    margin: 5px;
 }

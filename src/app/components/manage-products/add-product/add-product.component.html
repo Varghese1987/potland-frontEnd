@@ -1,0 +1,44 @@
+<form [formGroup]="formGroup"action="" class="normal-form" (ngSubmit)="addProduct()">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+            <div class="form-controles">
+                <mat-form-field>
+                    <input matInput formControlName="name" type="text" placeholder="Product Name*">
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="price" type="text" placeholder="Product Price*">
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="imgUrl" type="text" placeholder="Product Image Link*">
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput formControlName="shortDesc" rows="3" placeholder="Product Short Description*"></textarea>
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="form-controles">
+                <mat-form-field>
+                    <mat-select formControlName="category" placeholder="Product Category*">
+                        <mat-option>----Select Category----</mat-option>
+                        <ng-container *ngFor = "let item of categories">
+                            <mat-option value="{{item.id}}">{{item.value}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                    <mat-error>This Field is Mandatory</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput formControlName="longDesc" rows="5" placeholder="Product complete Description"></textarea>
+                </mat-form-field>
+                <div class="buttonRow">
+                    <button mat-raised-button color="primary" type="submit"[disabled]="formGroup.invalid">Add Product</button>
+                    <button mat-raised-button color="warn" (click)=clear()>Clear Fields</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

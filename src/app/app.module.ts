@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { NavComponent } from './components/shared/nav/nav.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
@@ -14,6 +12,15 @@ import { ProductlistComponent } from './components/ecart/productlist/productlist
 import { CartComponent } from './components/ecart/cart/cart.component';
 import { CartitemsComponent } from './components/ecart/cart/cartitems/cartitems.component';
 import { ProductitemComponent } from './components/ecart/productlist/productitem/productitem.component';
+import { ManageProductsComponent } from './components/manage-products/manage-products.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddProductComponent } from './components/manage-products/add-product/add-product.component';
+import { MaterialModule } from './material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ManageUsersComponent } from './components/manage-users/manage-users.component';
+import { AddUserComponent } from './components/manage-users/add-user/add-user.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +33,21 @@ import { ProductitemComponent } from './components/ecart/productlist/productitem
     ProductlistComponent,
     CartComponent,
     CartitemsComponent,
-    ProductitemComponent
+    ProductitemComponent,
+    ManageProductsComponent,
+    AddProductComponent,
+    ManageUsersComponent,
+    AddUserComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
