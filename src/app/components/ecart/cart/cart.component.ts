@@ -43,10 +43,12 @@ export class CartComponent implements OnInit {
       })
     }
     
-    this.cartTotal=0;
-    this.cartItems.forEach(item=>{
-      this.cartTotal+= (item.qty*item.price)
-    })
+    if(this.cartItems !== null){
+      this.cartTotal=0;
+      this.cartItems.forEach(item=>{
+        this.cartTotal+= (item.qty*item.price)
+      })
+    }
   }
 
 }
