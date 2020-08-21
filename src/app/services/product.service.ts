@@ -30,8 +30,11 @@ export class ProductService {
   }
 
   getProducts():Observable<Product[]>{
-    return this.http.get<Product[]>(`${environment.apiUrl}/productList`,{
-      headers:{authorization:localStorage.getItem('authToken')}
-    })
+    return this.http.get<Product[]>(`${environment.apiUrl}/productList`).pipe(
+      catchError(err=>{
+        alert(err.error.message);
+        return throwError(err);
+      })
+    )
   }
 }
