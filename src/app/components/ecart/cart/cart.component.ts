@@ -16,18 +16,18 @@ export class CartComponent implements OnInit {
 
   ngOnInit(){
     this.msgService.getMsg().subscribe((product:Product)=>{
-      //console.log(product)
+      // console.log(product)
       this.addProductToCart(product)    
     })
   }
 
   
-  addProductToCart(product:Product){
-
+  addProductToCart(product){
+    //console.log(product._id)
     let itemAvailable = false
 
     for(let i in this.cartItems){
-      if(this.cartItems[i].productId===product.id){
+      if(this.cartItems[i].productId===product._id){
         this.cartItems[i].qty++;
         itemAvailable=true;
         break;
@@ -36,13 +36,13 @@ export class CartComponent implements OnInit {
 
     if(!itemAvailable){
       this.cartItems.push({
-        productId:product.id,
+        productId:product._id,
         productName:product.name,
         qty:1,
         price:product.price
       })
     }
-
+    
     this.cartTotal=0;
     this.cartItems.forEach(item=>{
       this.cartTotal+= (item.qty*item.price)
