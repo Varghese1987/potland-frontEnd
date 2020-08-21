@@ -9,44 +9,44 @@ import { Product } from 'src/app/models/product';
 })
 export class CartComponent implements OnInit {
 
-  cartItems=[]
-  cartTotal=0
+  cartItems = []
+  cartTotal = 0
 
-  constructor(private msgService :MessengerService) { }
+  constructor(private msgService: MessengerService) { }
 
-  ngOnInit(){
-    this.msgService.getMsg().subscribe((product:Product)=>{
+  ngOnInit() {
+    this.msgService.getMsg().subscribe((product: Product) => {
       // console.log(product)
-      this.addProductToCart(product)    
+      this.addProductToCart(product)
     })
   }
 
-  
-  addProductToCart(product){
+
+  addProductToCart(product) {
     //console.log(product._id)
     let itemAvailable = false
 
-    for(let i in this.cartItems){
-      if(this.cartItems[i].productId===product._id){
+    for (let i in this.cartItems) {
+      if (this.cartItems[i].productId === product._id) {
         this.cartItems[i].qty++;
-        itemAvailable=true;
+        itemAvailable = true;
         break;
       }
     }
 
-    if(!itemAvailable){
+    if (!itemAvailable) {
       this.cartItems.push({
-        productId:product._id,
-        productName:product.name,
-        qty:1,
-        price:product.price
+        productId: product._id,
+        productName: product.name,
+        qty: 1,
+        price: product.price
       })
     }
-    
-    if(this.cartItems !== null){
-      this.cartTotal=0;
-      this.cartItems.forEach(item=>{
-        this.cartTotal+= (item.qty*item.price)
+
+    if (this.cartItems !== null) {
+      this.cartTotal = 0;
+      this.cartItems.forEach(item => {
+        this.cartTotal += (item.qty * item.price)
       })
     }
   }
