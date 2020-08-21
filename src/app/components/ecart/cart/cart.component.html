@@ -1,8 +1,8 @@
 <div class="card">
     <div class="card-header">Shopping Cart</div>
-    <div *ngIf="cartItems.length===0" class="alert alert-info mt-2">Your Cart is Empty</div>
+    <div *ngIf="cartItems === null" class="alert alert-info mt-2">Your Cart is Empty</div>
 
-    <div class="card-body" *ngIf="cartItems.length>0">
+    <div class="card-body" *ngIf="cartItems !== null">
         <ul class="list-group mt-2">
             <li class="list-group-item" *ngFor="let item of cartItems">
                 <app-cartitems [cartItem]="item"></app-cartitems>
