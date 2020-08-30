@@ -17,7 +17,6 @@ export class ProductitemComponent implements OnInit {
   constructor(private msgService : MessengerService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    
   }
 
   addToCart(){

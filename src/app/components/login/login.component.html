@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm"action="" class="normal-form" (ngSubmit)="login()">
+<!-- <form [formGroup]="loginForm"action="" class="normal-form" (ngSubmit)="login()">
     <mat-grid-list cols="1" rowHeight="300px">
         <mat-grid-tile>
             <div class="form-controles">
@@ -17,4 +17,24 @@
         </mat-grid-tile>
     </mat-grid-list>
 </form>
-
+ -->
+<mat-card class="login-form">
+    <mat-card-header>
+        <mat-card-title>Login Form</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="loginForm" action="" class="normal-form" (ngSubmit)="login()">
+        <div class="form-controles">
+            <mat-form-field>
+                <input matInput formControlName="email" type="email" placeholder="email*">
+                <mat-error>This Field is Mandatory</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="password" type="password" placeholder="Password*">
+                <mat-error>This Field is Mandatory</mat-error>
+            </mat-form-field>
+            <div class="buttonRow">
+                <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" [tabIndex]='0'>Login</button>
+            </div>
+        </div>
+    </form>
+</mat-card>

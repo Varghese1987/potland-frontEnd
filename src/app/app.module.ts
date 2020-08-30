@@ -16,11 +16,13 @@ import { ManageProductsComponent } from './components/manage-products/manage-pro
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddProductComponent } from './components/manage-products/add-product/add-product.component';
 import { MaterialModule } from './material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ManageUsersComponent } from './components/manage-users/manage-users.component';
 import { AddUserComponent } from './components/manage-users/add-user/add-user.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProductsListComponent } from './components/manage-products/products-list/products-list.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { LoginComponent } from './components/login/login.component';
     ManageUsersComponent,
     AddUserComponent,
     LoginComponent,
+    ProductsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,9 +50,12 @@ import { LoginComponent } from './components/login/login.component';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
+    FlexLayoutModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[AddProductComponent]
 })
 export class AppModule { }

@@ -1,12 +1,37 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal">
-        <app-header></app-header>
-    </h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" routerLink="">Home</a>
-        <a class="p-2 text-dark" routerLink="manageProduct">Manage Products</a>
-        <a class="p-2 text-dark" routerLink="manageUser">Manage User</a>
-        <!-- <a class="p-2 text-dark" routerLink="">Pricing</a> -->
-    </nav>
-    <a class="btn btn-outline-primary" routerLink="login">Sign in</a>
+<div >
+    <mat-sidenav-container>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button (click)="sidenav.toggle()" fx-show='true' fxHide.gt-sm>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span class="logo">POTLAND</span>
+            <div fx-show='true' fxHide.lt-md='true'>
+                <a mat-button routerLink="home" routerLinkActive="active-link">Home</a>
+                <a mat-button routerLink="manageUser" routerLinkActive="active-link">Manage Users</a>
+                <a mat-button routerLink="manageProduct" routerLinkActive="active-link">Manage Products</a>
+            </div>
+            <span class="header-spacer"></span>
+            <a *ngIf="!userName" mat-button routerLink="login" routerLinkActive="active-link">
+                <mat-icon>person_outliner</mat-icon> Login</a>
+            <div>
+                <a mat-button *ngIf="userName" [matMenuTriggerFor]="menu">
+                    <mat-icon>account_circle</mat-icon>
+                    <span fxShow="true" fxHide.lt-md="true">{{userName}}</span>
+                </a>
+                <mat-menu #menu="matMenu">
+                    <button (click)="logout()" mat-menu-item>logout</button>
+                </mat-menu>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+        <mat-sidenav mode = "over" #sidenav>
+            <mat-nav-list>
+                <a mat-list-item (click)="sidenav.toggle()" routerLink="home">Home</a>
+                <a mat-list-item (click)="sidenav.toggle()" routerLink="manageUser">Manage Users</a>
+                <a mat-list-item (click)="sidenav.toggle()" routerLink="manageProduct">Manage Products</a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <router-outlet></router-outlet>
+    </mat-sidenav-container>
 </div>
