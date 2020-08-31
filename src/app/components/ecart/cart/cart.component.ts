@@ -54,7 +54,7 @@ export class CartComponent implements OnInit {
     }
   }
   
-  yourNumber = "9884622748";
+  yourNumber = "+919884622748";
 
   getLinkWhastapp() {
     console.log(this.cartItems)
