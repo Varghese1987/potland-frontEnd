@@ -63,7 +63,7 @@ export class CartComponent implements OnInit {
       this.cartItems.forEach(item => {
         this.returnMsg += "Product-Name:"+item.productName+"; Qty:"+item.qty+"; ItemTotal:"+item.qty*item.price
       })
-      console.log(this.returnMsg)
+      // console.log(this.returnMsg)
       var url = 'https://api.whatsapp.com/send?phone=' 
        + this.yourNumber 
        + '&text=' 
