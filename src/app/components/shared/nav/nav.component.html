@@ -8,14 +8,16 @@
             <span class="logo">POTLAND</span>
             <div fx-show='true' fxHide.lt-md='true'>
                 <a mat-button routerLink="home" routerLinkActive="active-link">Home</a>
-                <a mat-button routerLink="manageUser" routerLinkActive="active-link">Manage Users</a>
-                <a mat-button routerLink="manageProduct" routerLinkActive="active-link">Manage Products</a>
+                    <span *ngIf="role==='admin'">
+                    <a mat-button routerLink="manageUser" routerLinkActive="active-link">Manage Users</a>
+                    <a mat-button routerLink="manageProduct" routerLinkActive="active-link">Manage Products</a>
+                </span>
             </div>
             <span class="header-spacer"></span>
             <a *ngIf="!userName" mat-button routerLink="login" routerLinkActive="active-link">
                 <mat-icon>person_outliner</mat-icon> Login</a>
-            <div>
-                <a mat-button *ngIf="userName" [matMenuTriggerFor]="menu">
+            <div *ngIf="userName">
+                <a mat-button [matMenuTriggerFor]="menu">
                     <mat-icon>account_circle</mat-icon>
                     <span fxShow="true" fxHide.lt-md="true">{{userName}}</span>
                 </a>

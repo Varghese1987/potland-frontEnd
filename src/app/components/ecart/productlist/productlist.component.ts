@@ -3,6 +3,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MessengerService } from 'src/app/services/messenger.service';
 
 @Component({
   selector: 'app-productlist',
@@ -20,7 +21,7 @@ export class ProductlistComponent implements OnInit, OnDestroy {
   // productList;
   products:Product[]=[];
 
-  constructor(private productService:ProductService) { }
+  constructor(private msgService : MessengerService, private productService:ProductService) { }
 
   ngOnInit(): void{
     this.dataSource.paginator = this.paginator;
@@ -44,6 +45,6 @@ export class ProductlistComponent implements OnInit, OnDestroy {
     this.dataSource.data = products;
   }
   addToCart(product){
-    console.log(product)
+    this.msgService.sendMsg(product)
   }
 }

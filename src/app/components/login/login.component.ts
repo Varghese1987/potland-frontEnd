@@ -27,8 +27,11 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userId',response.userId);
       localStorage.setItem('role',response.role);
       localStorage.setItem('name',response.name);
-      // console.log(localStorage.getItem('name'))
-      this.router.navigate([""]);
+      console.log(localStorage.getItem('name'))
+      this.router.navigate(["/"])
+      .then(() => {
+        window.location.reload();
+      });
     },
     error=>{
       alert(`${error.error.message} - Pls Login with correct details or if you are a new user contact admin for new user registration`)

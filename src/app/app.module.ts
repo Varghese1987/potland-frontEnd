@@ -23,6 +23,7 @@ import { AddUserComponent } from './components/manage-users/add-user/add-user.co
 import { LoginComponent } from './components/login/login.component';
 import { ProductsListComponent } from './components/manage-products/products-list/products-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AddUserComponent,
     LoginComponent,
     ProductsListComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

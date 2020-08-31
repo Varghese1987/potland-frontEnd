@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,9 +8,14 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   userName = localStorage.getItem('name')
-  constructor(private router:Router) { }
+  role = localStorage.getItem('role')
+  
+  constructor(private router:Router) { 
+    
+  }
 
   ngOnInit(): void {
+    
   }
 
   logout() {
@@ -19,8 +23,13 @@ export class NavComponent implements OnInit {
     localStorage.removeItem('userId');
     localStorage.removeItem('role');
     localStorage.removeItem('name');
-    this.router.navigate(['']);
     // this.toastr.warning('You have been Logged Out!');
+    this.router.navigate([""])
+    .then(() => {
+      window.location.reload();
+    });
   }
+
+  
 
 }

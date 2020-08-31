@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { Product } from 'src/app/models/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,10 +10,11 @@ import { Product } from 'src/app/models/product';
 })
 export class CartComponent implements OnInit {
 
-  cartItems = []
-  cartTotal = 0
+  cartItems = [];
+  cartTotal = 0;
+  returnMsg="";
 
-  constructor(private msgService: MessengerService) { }
+  constructor(private msgService: MessengerService, private router : Router) { }
 
   ngOnInit() {
     this.msgService.getMsg().subscribe((product: Product) => {
@@ -47,8 +49,30 @@ export class CartComponent implements OnInit {
       this.cartTotal = 0;
       this.cartItems.forEach(item => {
         this.cartTotal += (item.qty * item.price)
+        // this.returnMsg += "Product-Name:"+item.name+"; Qty:"+item.qty+"; ItemTotal:"
       })
     }
+  }
+  
+  yourNumber = "9884622748";
+
+  getLinkWhastapp() {
+    console.log(this.cartItems)
+    if (this.cartItems !== null) {
+      this.returnMsg="";
+      this.cartItems.forEach(item => {
+        this.returnMsg += "Product-Name:"+item.productName+"; Qty:"+item.qty+"; ItemTotal:"+item.qty*item.price
+      })
+      console.log(this.returnMsg)
+      var url = 'https://api.whatsapp.com/send?phone=' 
+       + this.yourNumber 
+       + '&text=' 
+       + encodeURIComponent(this.returnMsg)
+  
+      this.router.navigate(['externalRedirect', { externalUrl: url }]);
+      this.cartItems=[];
+    }
+    // return url
   }
 
 }
